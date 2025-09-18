@@ -3,9 +3,9 @@ site_name: "Project Documentation"
 nav:
   - Home: index.md
   - Application:
-      - "Application Code": application.md
+      - "Application Code": apps.md
   - Infrastructure:
       - "Terraform Infrastructure": infra.md
   - Versioning:
-      - "Version Policy": versioning.md
+      - "Version Policy": version.md
 

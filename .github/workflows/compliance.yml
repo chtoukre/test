@@ -7,4 +7,6 @@ on:
 jobs:
   health:
     uses: chtoukre/org/.github/workflows/repo-health.yml@main
+  enforce-docs:
+    uses: chtoukre/org/.github/workflows/check-docs.yml@main
 
