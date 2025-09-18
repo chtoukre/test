@@ -12,17 +12,35 @@ jobs:
 
       - name: Verify required files and folders
         run: |
-          required=("README.md" "version.txt" "infra" ".env" "apps")
+          # Fichiers obligatoires
+          required_files=("README.md" "version.txt")
+          # Dossiers obligatoires
+          required_dirs=("infra" "apps" ".env")
+
           missing=0
-          for file in "${required[@]}"; do
-            if [ ! -e "$file" ]; then
-              echo "❌ Missing: $file"
+
+          echo "🔎 Vérification des fichiers..."
+          for file in "${required_files[@]}"; do
+            if [ ! -f "$file" ]; then
+              echo "❌ Missing file: $file"
               missing=1
             else
-              echo "✅ Found: $file"
+              echo "✅ Found file: $file"
             fi
           done
+
+          echo "🔎 Vérification des dossiers..."
+          for dir in "${required_dirs[@]}"; do
+            if [ ! -d "$dir" ]; then
+              echo "❌ Missing directory: $dir"
+              missing=1
+            else
+              echo "✅ Found directory: $dir"
+            fi
+          done
+
           if [ $missing -eq 1 ]; then
             echo "Repository does not meet compliance requirements."
             exit 1
           fi
+
